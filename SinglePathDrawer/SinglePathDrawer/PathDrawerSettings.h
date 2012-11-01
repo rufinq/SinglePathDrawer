@@ -13,8 +13,9 @@
 
 + (PathDrawerSettings *)sharedInstance;
 
-@property (atomic) UIColor* color;
-@property (atomic) CGFloat lineWidth;
-@property (atomic) NSUInteger currentRowForColor;
+@property (atomic) UIColor*     color;
+@property (atomic) CGFloat      lineWidth;
+@property (atomic) NSUInteger   currentRowForColor;
+@property (atomic) BOOL         activateGestureReconizer;
 
 @end

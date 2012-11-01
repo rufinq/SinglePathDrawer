@@ -48,7 +48,7 @@
 
 + (NSUInteger)defaultDistanceBetweenTwoPoints
 {
-    return 4;
+    return 5;
 }
 
 @end

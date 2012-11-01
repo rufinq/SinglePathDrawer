@@ -28,7 +28,6 @@
                                                         @"black",
                                                         @"blue",
                                                         @"green",
-                                                        @"grey",
                                                         @"cyan",
                                                         @"yellow",
                                                         @"magenta",
@@ -43,7 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.colorPickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
+    self.colorPickerView.transform = CGAffineTransformMakeScale(0.65f, 0.65f);
+    _gestureReconizerSwitch.on = [PathDrawerSettings sharedInstance].activateGestureReconizer;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,6 +96,11 @@
     {
         [[PathDrawerSettings sharedInstance] setColor:[UIColor performSelector:methodForColorChangement]];
     }
+}
+
+- (IBAction)gestureReconizerSwitched:(UISwitch *)sender
+{
+    [PathDrawerSettings sharedInstance].activateGestureReconizer = sender.on;
 }
 
 @end

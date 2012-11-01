@@ -16,7 +16,8 @@
 {
     self = [super init];
     if (self) {
-        
+        _point.x = 0.f;
+        _point.y = 0.f;
     }
     return self;
 }
@@ -30,10 +31,10 @@
     return self;
 }
 
-- (BOOL)isCloseToPoint:(PointPath *)point withDistance:(NSUInteger)distance
+- (BOOL)isCloseToPoint:(PointPath *)point withDistance:(CGFloat)distance
 {
-    NSInteger x_distance = abs(point.point.x - _point.x);
-    NSInteger y_distance = abs(point.point.y - _point.y);
+    CGFloat x_distance = fabs(point.point.x - _point.x);
+    CGFloat y_distance = fabs(point.point.y - _point.y);
     if (x_distance <= distance && y_distance <= distance)
         return true;
     return false;

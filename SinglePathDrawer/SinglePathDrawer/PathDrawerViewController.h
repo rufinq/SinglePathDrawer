@@ -12,16 +12,14 @@
 
 @interface PathDrawerViewController : UIViewController <PathDrawerViewData, UIGestureRecognizerDelegate>
 {
-    PathDrawerView      *_pathDrawerView;
-    PointPathCollection *_pointPathCollection;
-    CGFloat             _previousScale;
-    CGFloat             _previousRotation;
+    PathDrawerView          *_pathDrawerView;
+    PointPathCollection     *_pointPathCollection;
 }
 
 - (void)restartView;
 - (void)rotate:(id)sender;
 - (void)scaleView:(UIPinchGestureRecognizer *)sender;
 
-@property (getter = getPointPathCollection, nonatomic) PointPathCollection* pointPathCollection;
+@property (nonatomic) PointPathCollection* pointPathCollection;
 
 @end

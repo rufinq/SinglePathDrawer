@@ -18,6 +18,7 @@
         self.lineWidth = 4;
         self.color = [UIColor redColor];
         self.currentRowForColor = 0;
+        self.activateGestureReconizer = true;
     }
     return self;
 }

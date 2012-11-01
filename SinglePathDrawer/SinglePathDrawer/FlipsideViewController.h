@@ -16,12 +16,15 @@
 
 @interface FlipsideViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 {
-    NSArray     *_colorArray;
+    NSArray             *_colorArray;
+    IBOutlet UISwitch   *_gestureReconizerSwitch;
 }
 
 - (IBAction)done:(id)sender;
+- (IBAction)gestureReconizerSwitched:(id)sender;
 
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIPickerView *colorPickerView;
+
 
 @end

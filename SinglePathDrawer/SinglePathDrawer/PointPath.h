@@ -14,8 +14,7 @@
 }
 
 - (id)initWithPoint:(CGPoint)point;
-
-- (BOOL)isCloseToPoint:(PointPath *)point withDistance:(NSUInteger)distance;
+- (BOOL)isCloseToPoint:(PointPath *)point withDistance:(CGFloat)distance;
 
 @property CGPoint point;
 

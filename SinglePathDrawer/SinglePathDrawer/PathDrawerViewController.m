@@ -9,7 +9,7 @@
 #import "PathDrawerViewController.h"
 #import "PathDrawerSettings.h"
 
-@interface PathDrawerViewController ()
+@interface PathDrawerViewController()
 
 - (void)loadGestureRecognizer;
 
@@ -23,13 +23,10 @@
 - (id)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _pointPathCollection = [[PointPathCollection alloc] init];
-       // [[PathDrawerSettings sharedInstance] addDelegate:self];
-        
         [self loadGestureRecognizer];
-        _previousScale = 1.f;
-        _previousRotation = 0.f;
     }
     return self;
 }
@@ -69,40 +66,20 @@
     [self.view addGestureRecognizer:pinchRecongnizer];
 }
 
-- (void)rotate:(UIRotationGestureRecognizer *)sender
+- (void)rotate:(UIRotationGestureRecognizer *)gestureRecognizer
 {
-    CGFloat new_value = sender.rotation -  _previousRotation;
-    new_value /= 2;
-    if (abs(new_value) < 5.f)
-    {
-        [UIView animateWithDuration:0.15 animations:^{
-        self.view.transform = CGAffineTransformMakeRotation(new_value);
-        }];
-        _previousRotation = new_value;
-    }
+    if ([PathDrawerSettings sharedInstance].activateGestureReconizer == false)
+        return;
+    gestureRecognizer.view.transform = CGAffineTransformRotate(gestureRecognizer.view.transform, gestureRecognizer.rotation);
+    gestureRecognizer.rotation = 0.;
 }
 
-- (void)scaleView:(UIPinchGestureRecognizer *)sender
+- (void)scaleView:(UIPinchGestureRecognizer *)gestureRecognizer
 {
-    return ; // to delete
-    if (sender.scale > 0.4f && sender.scale <= 3.f)
-    {
-        CGFloat diff = sender.scale - _previousScale;
-        if (diff <= -0.1f)
-        {
-            diff = -0.1f;
-        }
-        else if (diff >= 0.1f)
-        {
-            diff = 0.1f;
-        }
-        CGFloat newValue = diff / 2 + _previousScale;
-        if (newValue < 2.)
-        {
-            _previousScale = newValue;
-            self.view.transform = CGAffineTransformMakeScale(_previousScale, _previousScale);
-        }
-    }
+    if ([PathDrawerSettings sharedInstance].activateGestureReconizer == false)
+        return;
+    gestureRecognizer.view.transform = CGAffineTransformScale(gestureRecognizer.view.transform, gestureRecognizer.scale, gestureRecognizer.scale);
+    gestureRecognizer.scale = 1;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
